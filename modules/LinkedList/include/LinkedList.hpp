@@ -13,6 +13,8 @@ namespace my_linkedlist {
 
     private:
         Node * head;
+
+        Node * createnode( int val );  // this function will create a node from heap memory
     };
 
 }  // namespace my_linkedlist
