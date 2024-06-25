@@ -9,10 +9,10 @@ namespace my_linkedlist {
         LinkedList();
         ~LinkedList();
 
-        void emplace_back( int val );
+        void emplace_back( int val );  // creates a node and appends to the end of the linked list
 
     private:
-        Node * head;
+        Node * head;  // a pointer that points to the beginning of a linkedlist
 
         Node * createnode( int val );  // this function will create a node from heap memory
     };

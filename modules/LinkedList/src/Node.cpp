@@ -8,3 +8,9 @@ Node::Node( Node * next, int val ) : val( val ), next( next ) {}
 
 // Function that links this Node to another Node
 void Node::link( Node * node ) { next = node; }
+
+Node * Node::next_node()
+{
+    //
+    return next;
+}
