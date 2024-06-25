@@ -4,7 +4,9 @@ project(LinkedlistsRoot)
 
 
 add_subdirectory("modules/LinkedList")
+
 add_subdirectory("samples/LinkedListSample")
 add_subdirectory("samples/NodeTest")
+add_subdirectory("samples/PointerSample")
 
 

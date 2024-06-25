@@ -7,7 +7,12 @@ namespace my_linkedlist {
 
     LinkedList::~LinkedList() {}
 
-    void LinkedList::emplace_back( int val ) {}
+    void LinkedList::emplace_back( int val ) {
+
+        createnode( val );
+
+
+    }
 
     Node * LinkedList::createnode( int val )
     {
