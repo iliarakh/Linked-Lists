@@ -14,3 +14,9 @@ Node * Node::next_node()
     //
     return next;
 }
+
+ int Node::getVal() const {
+
+    //
+    return val;
+}

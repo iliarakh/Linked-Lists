@@ -1,24 +1,40 @@
 #include "Node.hpp"
 #include <LinkedList.hpp>
+#include <cstddef>
 
 namespace my_linkedlist {
 
     LinkedList::LinkedList() : head( nullptr ) {}
 
+    void LinkedList::emplace_front( int val )
+    {
+        Node * new_node = createnode( val );  // creates a new node with the given value
+
+        if ( head == nullptr ) {  // if the list is empty
+            head = new_node;      // set the new node as the head
+        }
+        else {                       // if the list is not empty
+            new_node->link( head );  // link the new node to the current head
+            head = new_node;         // set the new node as the new head
+        }
+    }
+
     void LinkedList::emplace_back( int val )
     {
         Node * new_node = createnode( val );
-        std::cout << new_node << "\n";
-
-        if ( head == nullptr ) {
-            head = new_node;
-        } else {
-            Node * placeholder = head;
-            while ( placeholder->next_node() != nullptr ) {
-                placeholder = placeholder->next_node();
-            }
-            placeholder->link(new_node);
+        if ( head == nullptr ) {  // checks if head is a null pointer is true
+            head = new_node;      // if it is then head gets set to new node
+            return;
         }
+
+        // if statment is not true placeholder gets the
+        // memory address of node and that is equal to head
+        Node * placeholder = head;
+        // while placeholder is not equal to null pointer function continues
+        while ( placeholder->next_node() != nullptr ) {
+            placeholder = placeholder->next_node();  // placeholder = next element
+        }
+        placeholder->link( new_node );  // once it is finished set the createnode value as the tail
     }
 
     // creates a node on the heap with value `val` and returns the address of it
@@ -29,6 +45,44 @@ namespace my_linkedlist {
         return pval;             // return the address of the newly constructed Node
     }
 
-    LinkedList::~LinkedList() {}
+    // this function deletes all of the nodes in the list headed by `local_head`
+    void LinkedList::delete_list_r( Node * local_head )
+    {
+        if ( local_head == nullptr ) {  // trivial case (error checking) (there is no list to delete)
+            return;
+        }
 
+        if ( local_head->next_node() != nullptr ) {  // recursive step
+            delete_list_r( local_head->next_node() );
+        }
+
+        std::cout << "Deleteing: " << local_head << "\n";
+        delete local_head;  // base case
+    }
+
+    void LinkedList::delete_list_i( Node * local_head )
+    {
+        while ( local_head != nullptr ) {
+            Node * placeholder = local_head;
+            local_head         = local_head->next_node();
+            delete placeholder;
+        }
+    }
+
+    void LinkedList::print_list()
+    {
+        Node * current = head;                   // declares a pointer current of type Node and initializes it to head
+        while ( current != nullptr ) {           // while current is not equal to nullptr the loops iterates
+            std::cout << *current << std::endl;  // prints out the current value (int of node) and ends line
+            // updates "current" to be the value of next_node() and itterates through the loop again until "current"
+            // points to NULL and then stops the while loop
+            current = current->next_node();
+        }
+    }
+
+    LinkedList::~LinkedList()
+    {
+        delete_list_r( head );
+        head = nullptr;
+    }
 }  // namespace my_linkedlist

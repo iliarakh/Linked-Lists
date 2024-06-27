@@ -5,6 +5,7 @@
 
 class Node {
 public:
+
     // Constructor that takes an integer and initializes 'val'
     Node( int val );
 
@@ -15,6 +16,9 @@ public:
     void link( Node * node );
 
     Node * next_node();
+
+    int getVal() const;
+
 
     friend std::ostream & operator<<( std::ostream & lhs, const Node & printed_node )
     {
