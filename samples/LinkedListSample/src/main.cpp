@@ -12,7 +12,9 @@ int main()
     mylist.emplace_back( 7 );
     mylist.emplace_front(3);
     mylist.emplace_back( 8 );
+    mylist.insert(1, 5);
     mylist.print_list();
     
+
     return 0;
 }

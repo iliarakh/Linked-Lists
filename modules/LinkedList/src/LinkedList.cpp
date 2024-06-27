@@ -1,6 +1,7 @@
 #include "Node.hpp"
 #include <LinkedList.hpp>
 #include <cstddef>
+#include <ratio>
 
 namespace my_linkedlist {
 
@@ -78,6 +79,30 @@ namespace my_linkedlist {
             // points to NULL and then stops the while loop
             current = current->next_node();
         }
+    }
+
+    void LinkedList::insert( int pos, int val ) //function insert with constructs pos and val 
+    {
+        if ( pos == 0 ) { //if pos =0 meaning its the head node call emplace front function
+            emplace_front( val );
+            return;
+        }
+
+        Node * current = head; // initialize head with current 
+        for ( int i = 0; i < pos - 1; i++ ) {  // loop until we are directly behind the target node
+            if ( current == nullptr ) {        // check if we are still in bounds
+                return;
+            }
+            current = current->next_node(); // set current to the node ahead until we are one position before we need to insert
+        }
+
+        if ( current == nullptr ) { // check bounds
+            return;
+        }
+
+        Node * insert_node = createnode( val ); // create our node for insertion
+        insert_node->link( current->next_node() ); // link the insert node to the node ahead 
+        current->link( insert_node ); //link the node before to the inserted node
     }
 
     LinkedList::~LinkedList()

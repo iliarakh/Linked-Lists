@@ -15,6 +15,11 @@ namespace my_linkedlist {
 
         void print_list();
 
+        // this function takes in a position and a value and it creates a node with value val,
+        // and inserts it into the list at position, pos if pos is out of bounds then function does nothing and returns
+        // pos is 0 indexed
+        void insert( int pos, int val );
+
     private:
         Node * head;  // a pointer that points to the beginning of a linkedlist
 
