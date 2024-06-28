@@ -72,37 +72,40 @@ namespace my_linkedlist {
 
     void LinkedList::print_list()
     {
-        Node * current = head;                   // declares a pointer current of type Node and initializes it to head
-        while ( current != nullptr ) {           // while current is not equal to nullptr the loops iterates
-            std::cout << *current << std::endl;  // prints out the current value (int of node) and ends line
+        Node * current = head;             // declares a pointer current of type Node and initializes it to head
+        while ( current != nullptr ) {     // while current is not equal to nullptr the loops iterates
+            std::cout << "," << *current;  // prints out the current value (int of node) and ends line
             // updates "current" to be the value of next_node() and itterates through the loop again until "current"
             // points to NULL and then stops the while loop
             current = current->next_node();
         }
+        std::cout << "\n";
     }
 
-    void LinkedList::insert( int pos, int val ) //function insert with constructs pos and val 
+    void LinkedList::insert( int pos, int val )  // function insert with constructs pos and val
     {
-        if ( pos == 0 ) { //if pos =0 meaning its the head node call emplace front function
+        if ( pos == 0 ) {  // if pos =0 meaning its the head node call emplace front function
             emplace_front( val );
             return;
         }
 
-        Node * current = head; // initialize head with current 
+        Node * current = head;                 // initialize head with current
         for ( int i = 0; i < pos - 1; i++ ) {  // loop until we are directly behind the target node
             if ( current == nullptr ) {        // check if we are still in bounds
                 return;
             }
-            current = current->next_node(); // set current to the node ahead until we are one position before we need to insert
+            current =
+                current
+                    ->next_node();  // set current to the node ahead until we are one position before we need to insert
         }
 
-        if ( current == nullptr ) { // check bounds
+        if ( current == nullptr ) {  // check bounds
             return;
         }
 
-        Node * insert_node = createnode( val ); // create our node for insertion
-        insert_node->link( current->next_node() ); // link the insert node to the node ahead 
-        current->link( insert_node ); //link the node before to the inserted node
+        Node * insert_node = createnode( val );     // create our node for insertion
+        insert_node->link( current->next_node() );  // link the insert node to the node ahead
+        current->link( insert_node );               // link the node before to the inserted node
     }
 
     LinkedList::~LinkedList()
