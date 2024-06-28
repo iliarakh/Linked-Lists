@@ -72,9 +72,9 @@ namespace my_linkedlist {
 
     void LinkedList::print_list()
     {
-        Node * current = head;             // declares a pointer current of type Node and initializes it to head
-        while ( current != nullptr ) {     // while current is not equal to nullptr the loops iterates
-            std::cout << "," << *current;  // prints out the current value (int of node) and ends line
+        Node * current = head;              // declares a pointer current of type Node and initializes it to head
+        while ( current != nullptr ) {      // while current is not equal to nullptr the loops iterates
+            std::cout << *current << ", ";  // prints out the current value (int of node) and ends line
             // updates "current" to be the value of next_node() and itterates through the loop again until "current"
             // points to NULL and then stops the while loop
             current = current->next_node();
