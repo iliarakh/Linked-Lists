@@ -5,7 +5,6 @@
 
 class Node {
 public:
-
     // Constructor that takes an integer and initializes 'val'
     Node( int val );
 
@@ -19,10 +18,9 @@ public:
 
     int getVal() const;
 
-
     friend std::ostream & operator<<( std::ostream & lhs, const Node & printed_node )
     {
-        lhs << "val: " << printed_node.val << "\n";
+        lhs << "val: " << printed_node.val;
         return lhs;
     }
 
