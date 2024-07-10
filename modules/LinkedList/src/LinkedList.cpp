@@ -7,6 +7,26 @@ namespace my_linkedlist {
 
     LinkedList::LinkedList() : head( nullptr ) {}
 
+    void LinkedList::insert_sort( int val )
+    {
+        Node * new_node = createnode( val );  
+
+        
+        if ( head == nullptr || head->getVal() >= new_node->getVal() ) {
+            new_node->link( head );
+            head = new_node;
+        }
+        else {
+            
+            Node * current = head;
+            while ( current->next_node() != nullptr && current->next_node()->getVal() < new_node->getVal() ) {
+                current = current->next_node();
+            }
+            new_node->link( current->next_node() );
+            current->link( new_node );
+        }
+    }
+
     void LinkedList::emplace_front( int val )
     {
         Node * new_node = createnode( val );  // creates a new node with the given value
@@ -94,9 +114,8 @@ namespace my_linkedlist {
             if ( current == nullptr ) {        // check if we are still in bounds
                 return;
             }
-            current =
-                current
-                    ->next_node();  // set current to the node ahead until we are one position before we need to insert
+            current = current->next_node();  // set current to the node ahead until we are one position before we
+                                             // need to insert
         }
 
         if ( current == nullptr ) {  // check bounds

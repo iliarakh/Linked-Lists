@@ -6,10 +6,13 @@ namespace my_linkedlist {
 
     class LinkedList {
     public:
+
         LinkedList();
         ~LinkedList();
 
         void emplace_front( int val );
+
+        void insert_sort( int val);
 
         void emplace_back( int val );  // creates a node and appends to the end of the linked list
 

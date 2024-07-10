@@ -20,10 +20,11 @@ int main()
     std::cout << "List after emplace_back operations: ";
     list.print_list();
 
-    // Use insert to add elements at a specific position
-    std::cout << "Inserting 6 at position 2 in the list.\n";
-    list.insert( 2, 6 );  // Insert 6 at position 2
-    std::cout << "List after insert operation: ";
+    std::cout << "Inserting numbers in sorted order.\n";
+    list.insert_sort( 7 );
+    list.insert_sort( 3 );
+    list.insert_sort( 1 );
+    std::cout << "List after insert_sort operation: ";
     list.print_list();
 
     return 0;
