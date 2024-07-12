@@ -5,12 +5,10 @@
 // this function moves all of the elements to the left after(and including) the given index
 void shift( int dst[], int const index, int const insertCount, int const arrayLength )
 {
-     if (index < 0 || index >= insertCount) {
-        
-        throw std::runtime_error( "NOT ENOUGH SPACE TO INSERT" );
+    if ( index < 0 || index > insertCount ) {  // Change the condition here
+        throw std::runtime_error( "INDEX OUT OF BOUNDS" );
     }
-    if (insertCount > arrayLength) {
-
+    if ( insertCount > arrayLength ) {
         throw std::runtime_error( "NOT ENOUGH SPACE TO INSERT" );
     }
     for ( int i = insertCount; i > index; i-- ) {
@@ -28,7 +26,7 @@ void insert( int dst[], const int val, const int insertCount, const int arrayLen
     int i;
 
     // clang-format off
-    for ( i = insertCount - 1; ( i >= 0 && dst[i] > val ); i-- );
+    for ( i = insertCount - 1; ( i > -1 && dst[i] > val ); i-- );
     // clang-format on
 
     shift( dst, i + 1, insertCount, arrayLength );
@@ -111,7 +109,6 @@ int main()
     catch ( std::exception const & err_msg ) {
         std::cout << err_msg.what() << "\n";
     }
-    
 
     std::cout << "Goodbye\n";
 
