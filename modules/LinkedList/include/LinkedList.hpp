@@ -12,7 +12,7 @@ namespace my_linkedlist {
 
         void emplace_front( int val );
 
-        void insert_sort( int val);
+        void insertsort();
 
         void emplace_back( int val );  // creates a node and appends to the end of the linked list
 

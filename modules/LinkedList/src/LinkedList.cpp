@@ -7,23 +7,39 @@ namespace my_linkedlist {
 
     LinkedList::LinkedList() : head( nullptr ) {}
 
-    void LinkedList::insert_sort( int val )
+    void LinkedList::insertsort()
     {
-        Node * new_node = createnode( val );  
-
-        
-        if ( head == nullptr || head->getVal() >= new_node->getVal() ) {
-            new_node->link( head );
-            head = new_node;
+        if ( head == nullptr || head->next_node() == nullptr ) {
+            return;  // if the list is empty or has only one node, it is already sorted.
         }
-        else {
-            
-            Node * current = head;
-            while ( current->next_node() != nullptr && current->next_node()->getVal() < new_node->getVal() ) {
-                current = current->next_node();
+
+        Node * sorted_end = head;  // the end of the sorted part of the list.
+        while ( sorted_end->next_node() != nullptr ) {
+            Node * curr = sorted_end->next_node();  // The node to be inserted.
+            if ( curr->getVal() < head->getVal() ) {
+                // if the node to be inserted has a smaller value than the current head,
+                // it becomes the new head.
+                sorted_end->link( curr->next_node() );
+                curr->link( head );
+                head = curr;
             }
-            new_node->link( current->next_node() );
-            current->link( new_node );
+            else {
+                // find the node in the sorted part of the list to insert after.
+                Node * insert_after = head;
+                while ( insert_after != sorted_end && insert_after->next_node()->getVal() < curr->getVal() ) {
+                    insert_after = insert_after->next_node();
+                }
+                if ( insert_after != sorted_end ) {
+                    // insert the node in the middle of the sorted part of the list.
+                    sorted_end->link( curr->next_node() );
+                    curr->link( insert_after->next_node() );
+                    insert_after->link( curr );
+                }
+                else {
+                    // the node is already in its correct position.
+                    sorted_end = sorted_end->next_node();
+                }
+            }
         }
     }
 
