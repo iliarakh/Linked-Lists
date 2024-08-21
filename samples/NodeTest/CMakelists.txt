@@ -3,3 +3,17 @@ project(Nodetest_application)
 add_executable(${PROJECT_NAME} main.cpp)
 
 target_link_libraries(${PROJECT_NAME} iLinkedList iNode)
+
+
+
+# void Doubly_LinkedList::delete_list_backwards() {
+#     DoublyNode* current = tail;
+
+#     while (current != nullptr) {
+#         DoublyNode* temp = current;
+#         current = current->prev();
+#         delete temp;
+#     }
+
+#     head = tail = nullptr;
+# }

@@ -2,6 +2,7 @@
 #define __LINKED_LIST__MY_LINKEDLIST__NODE__HPP__
 
 #include <iostream>
+#include <iNode.hpp>
 
 
 class Node {

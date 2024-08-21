@@ -5,7 +5,6 @@ class iNode {
 
 public:
     int val;
-    
 };
 
 #endif

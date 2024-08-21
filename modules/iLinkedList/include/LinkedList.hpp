@@ -1,15 +1,16 @@
 #ifndef __LINKED_LIST__MY_LINKEDLIST__LINKEDLIST__HPP__
 #define __LINKED_LIST__MY_LINKEDLIST__LINKEDLIST__HPP__
 
-#include "Node.hpp"
-#include "iLinkedList.hpp"
+#include <Node.hpp>
+#include <iLinkedList.hpp>
+#include <iNode.hpp>
 
 namespace my_linkedlist {
 
     class LinkedList : public iLinkedList {
     public:
         LinkedList();
-        ~LinkedList() override;
+        ~LinkedList();
 
         // this function makes val the new head
         void emplace_front(int val) override;
@@ -27,6 +28,7 @@ namespace my_linkedlist {
         void insert(int pos, int val) override;
 
     private:
+
         Node* head;  // a pointer that points to the beginning of a linkedlist
 
         static Node* createnode(int val);  // this function will create a node from heap memory

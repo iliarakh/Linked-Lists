@@ -11,4 +11,5 @@ add_subdirectory("samples/NodeTest")
 add_subdirectory("samples/PointerSample")
 add_subdirectory("samples/arrays")
 add_subdirectory("samples/jagged_arrays")
+add_subdirectory("samples/DoublyLinkedListSample")
 
