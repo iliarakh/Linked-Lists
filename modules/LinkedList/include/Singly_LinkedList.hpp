@@ -7,10 +7,10 @@
 
 namespace my_linkedlist {
 
-    class LinkedList : public iLinkedList {
+    class Singly_LinkedList : public iLinkedList {
     public:
-        LinkedList();
-        ~LinkedList();
+        Singly_LinkedList();
+        ~Singly_LinkedList();
 
         // this function makes val the new head
         void emplace_front(int val) override;

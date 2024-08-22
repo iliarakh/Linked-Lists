@@ -4,7 +4,7 @@ project(LinkedlistsRoot)
 
 
 
-add_subdirectory("modules/iLinkedList")
+add_subdirectory("modules/LinkedList")
 add_subdirectory("modules/Node")
 add_subdirectory("samples/LinkedListSample")
 add_subdirectory("samples/NodeTest")

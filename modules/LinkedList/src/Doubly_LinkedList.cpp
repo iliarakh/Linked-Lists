@@ -8,7 +8,12 @@ namespace my_linkedlist {
 
     Doubly_LinkedList::Doubly_LinkedList() : head( nullptr ), tail( nullptr ) {}
 
-    DoublyNode * Doubly_LinkedList::createnode( int val ) { return new DoublyNode( val ); }
+    DoublyNode * Doubly_LinkedList::createnode( int val )
+    {
+        DoublyNode * new_node = new DoublyNode( val );
+        std::cout << "creating: " << new_node << "\n";  
+        return new_node;
+    }
 
     void Doubly_LinkedList::emplace_front( int val )
     {
@@ -16,13 +21,13 @@ namespace my_linkedlist {
         if ( head == nullptr ) {
             head = new_node;
             tail = new_node;
-            std::cout << "creating: " << new_node << "\n";
+            
         }
         else {
             new_node->set_next( head );
             head->set_prev( new_node );
             head = new_node;
-            std::cout << "creating: " << new_node << "\n";
+            
         }
     }
 
@@ -32,13 +37,13 @@ namespace my_linkedlist {
         if ( tail == nullptr ) {
             head = new_node;
             tail = new_node;
-            std::cout << "creating: " << new_node << "\n";
+            
         }
         else {
             tail->set_next( new_node );
             new_node->set_prev( tail );
             tail = new_node;
-            std::cout << "creating: " << new_node << "\n";
+            
         }
     }
 
@@ -105,19 +110,18 @@ namespace my_linkedlist {
 
     Doubly_LinkedList::~Doubly_LinkedList() { delete_list_backwards(); }
 
-    void Doubly_LinkedList::delete_list_backwards()
+    void Doubly_LinkedList::delete_list_backwards()  // deconstructor that deletes elements starting from tail
     {
-        DoublyNode * current = tail;
+        DoublyNode * current = tail;  // creates a pointer to Doubly node called current and sets it = to tail
 
-        while ( current != nullptr ) {
-            DoublyNode * temp = current;
-            current           = current->prev();
-            delete temp;
-            std::cout << "deleting: " << temp << "\n";
-            
+        while ( current != nullptr ) {                  // while tail doesnt = nullptr keep loop running
+            DoublyNode * temp = current;                // set a temp to the current node
+            current           = current->prev();        // update current to previous node
+            delete temp;                                // delete the node that 'temp' points to
+            std::cout << "deleting: " << temp << "\n";  // output memeory adress of node deleted
         }
 
-        head = tail = nullptr;
+        head = tail = nullptr;  // once done set tail and head to null ptr
     }
 
 }  // namespace my_linkedlist

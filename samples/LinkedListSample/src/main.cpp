@@ -1,9 +1,9 @@
-#include "LinkedList.hpp"
+#include "Singly_LinkedList.hpp"
 #include <iostream>
 
 int main()
 {
-    my_linkedlist::LinkedList list;
+    my_linkedlist::Singly_LinkedList list;
 
     // Use emplace_front to add elements at the front
     std::cout << "Adding 1, then 2,then  3 to the front of the list.\n";

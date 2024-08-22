@@ -1,4 +1,4 @@
-#include <LinkedList.hpp>
+#include <Singly_LinkedList.hpp>
 #include <Node.hpp>
 #include <fstream>
 #include <iostream>
@@ -26,7 +26,7 @@ int main()
 
     // Read the file int by int
     int                       a;
-    my_linkedlist::LinkedList list;  // this is the list we are creating
+    my_linkedlist::Singly_LinkedList list;  // this is the list we are creating
 
     while ( file >> a ) {
         list.emplace_back( a );
